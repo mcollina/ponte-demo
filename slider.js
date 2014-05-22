@@ -50,12 +50,12 @@ SensorTag.discover(function(sensorTag) {
   })
 
   sensorTag.on('humidityChange', function(temperature, humidity) {
-    client.publish('sensortag/temperature', '' + temperature)
-    client.publish('sensortag/humidity', '' + humidity)
+    client.publish('sensortag/temperature', '' + temperature, { retain: true })
+    client.publish('sensortag/humidity', '' + humidity, { retain: true })
   })
 
   sensorTag.on('irTemperatureChange', function(objectTemperature, ambientTemperature) {
-    client.publish('sensortag/ir/object', '' + objectTemperature)
-    client.publish('sensortag/ir/ambient', '' + ambientTemperature)
+    client.publish('sensortag/ir/object', '' + objectTemperature, { retain: true })
+    client.publish('sensortag/ir/ambient', '' + ambientTemperature, { retain: true })
   })
 })
